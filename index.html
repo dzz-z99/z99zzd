@@ -1,92 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3274</title>
-    <style>
-        body {
-            overflow: hidden; /* Prevents scrolling */
-   			 display: block;
-    		font-size: 2em;
-    		font-weight: bold;
-		}
-		hr {
-		    color: blue;
-		    background: blue;
-		    height: 1px;
-		    border: 0;
-		}
-		.note {
-		    position: fixed;
-		    bottom: 0.5em;
-		    left: 50%;
-		    transform: translate(-50%, 0%);
-		    text-align: center;
-		    white-space: nowrap;
-		    z-index: 99;
-		}
-		sup {
-		    vertical-align: super;
-		    font-size: 0.4em;
-		    font-weight: normal;
+  <title>Black Dot Link</title>
+  <style>
+    .black-dot {
+      display: block;
+      width: 2px;
+      height: 2px;
+      background-color: black;
+    }
 
-		}
-
-		im {
-			position: fixed;
-		    bottom: 0.5em;
-		    left: 0.5em;
-		    transform: translate(-50%, 0%);
-		    text-align: center;
-		    white-space: nowrap;
-		    z-index: 99;
-		    vertical-align: super;
-		}
-    </style>
-
-    
+    .black-dot:hover {
+      background-color: white;
+    }
+  </style>
 </head>
 <body>
-
-
-
-    <div class="countdown" id="countdown" style="">
-        <!-- Countdown timer will be inserted here by JavaScript -->
-    </div>
-
-
-
-
-<a href="mailto:z99zzd@proton.me" target=”_blank”><hr></a>
-<img src="/Users/dario/Dropbox/bkk_trip/delivery_taopoon/originals copy/IMG_2278.jpg" alt="Centered Image">
-
-
-    <script>
-        function updateCountdown() {
-            const targetDate = new Date("2031-02-03T00:00:00").getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML =
-                `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-
-            if (distance < 0) {
-                clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "The date has passed";
-            }
-        }
-
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown();  // Initial call to display countdown immediately
-    </script>
+  <a href="your-link-here" class="black-dot"></a>
 </body>
 </html>
 
