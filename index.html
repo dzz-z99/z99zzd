@@ -11,34 +11,39 @@
       align-items: center;
     }
 
-    .black-dot {
+   .container {
+      position: relative;
+    }
+
+   .image {
+      display: block;
+      width: 400px; /* adjust the value to change the image width */
+      height: auto;
+      margin: 0 auto; /* center the image horizontally */
+    }
+
+   .black-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: block;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background-color: black;
+      z-index: 1; /* ensure the dot is on top of the image */
     }
 
-    .black-dot:hover {
-      width: 10px;
-      height: 10px;
+   .black-dot:hover {
+      background-color: white;
     }
   </style>
 </head>
 <body>
-  <a href="your-link-here" class="black-dot"></a>
+  <div class="container">
+    <img src="/Users/dario/Dropbox/_websites/_black dot_z99/604_1_1_x---.png.68e4a1af-b9f4-484d-b4bd-f906f000df64.png" class="image" alt="Image under the dot">
+    <a href="your-link-here" class="black-dot"></a>
+  </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
