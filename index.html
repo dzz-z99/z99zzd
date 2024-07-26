@@ -2,31 +2,33 @@
 <html>
 <head>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=120px, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>undefined</title>
+  <meta name="viewport" content="width=120px, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
-    body {
+    html, body {
       margin: 0;
-      height: 100vh;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevent scrolling */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-   .container {
+    .container {
       position: relative;
     }
 
-   .image {
+    .image {
       display: block;
-      width: 120px; /* adjust the value to change the image width */
+      width: 120px; /* Adjust the value to change the image width */
       height: auto;
-      margin: 0 auto; /* center the image horizontally */
+      margin: 0 auto; /* Center the image horizontally */
       animation: rotation 0s infinite linear;
-
     }
 
-   .black-dot {
+    .black-dot {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -36,31 +38,27 @@
       height: 7px;
       border-radius: 50%;
       background-color: black;
-      z-index: 1; /* ensure the dot is on top of the image */
+      z-index: 1; /* Ensure the dot is on top of the image */
     }
 
-   .black-dot:hover {
+    .black-dot:hover {
       background-color: white;
     }
 
-        @keyframes rotation {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-
-
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="circled.gif" class="image" class="rotate" alt="Image under the dot">
-    <a href="https://dariodezfu.li/" class="black-dot"></a>
+    <img src="/Users/dario/Dropbox/_websites/_black dot_z99/circled.gif" class="image" alt="Image under the dot">
+    <a href="/Users/dario/Dropbox/_websites/_new_zz99zd/index.html" class="black-dot"></a>
   </div>
-
 </body>
 </html>
