@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="robots" content="noindex, nofollow">
   <title>undefined</title>
   <style>
     body {
@@ -17,9 +18,11 @@
 
    .image {
       display: block;
-      width: 400px; /* adjust the value to change the image width */
+      width: 120px; /* adjust the value to change the image width */
       height: auto;
       margin: 0 auto; /* center the image horizontally */
+      animation: rotation 0s infinite linear;
+
     }
 
    .black-dot {
@@ -28,8 +31,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       display: block;
-      width: 10px;
-      height: 10px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background-color: black;
       z-index: 1; /* ensure the dot is on top of the image */
@@ -38,12 +41,25 @@
    .black-dot:hover {
       background-color: white;
     }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="images/604_1_1_x---.png.68e4a1af-b9f4-484d-b4bd-f906f000df64.png" class="image" alt="Image under the dot">
-    <a href="https://www.andergraun.com/files/PREMSA/SERRA/15_eng_articulos_serra.pdf" class="black-dot"></a>
+    <img src="/Users/dario/Dropbox/_websites/_black dot_z99/circled.gif" class="image" class="rotate" alt="Image under the dot">
+    <a href="/Users/dario/Dropbox/_websites/_new_zz99zd/index.html" class="black-dot"></a>
   </div>
+
 </body>
 </html>
