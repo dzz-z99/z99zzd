@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>undefined</title>
+    <style>
+        body {
+            background-color: #ffffff; /* Set background to white */
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            position: relative;
+        }
+
+        .image-link {
+            position: absolute; /* Allow positioning anywhere on the page */
+        }
+
+        .image-link img {
+            width: 55px;
+            height: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageContainer = document.getElementById('image-container');
+            const imageFolder = 'rain/';
+            const imageCount = 15; // Number of images
+
+            // Generate image list
+            const imageList = Array.from({ length: imageCount }, (v, i) => `${String(i + 1).padStart(2, '0')}.gif`);
+
+            // List of URLs
+            const urlList = [
+                'https://dariodezfu.li/', 'https://dariodezfu.li/', 'https://dariodezfu.li/',
+                'https://dariodezfu.li/', 'https://dariodezfu.li/', 'https://dariodezfu.li/',
+                'https://dariodezfu.li/', 'https://dariodezfu.li/', 'https://dariodezfu.li/',
+                'https://dariodezfu.li/', 'https://dariodezfu.li/', 'https://dariodezfu.li/',
+                'https://dariodezfu.li/', 'https://dariodezfu.li/', 'https://z99zzd.net/'
+            ];
+
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            // Shuffle image list and URL list
+            shuffle(imageList);
+            shuffle(urlList);
+
+            imageList.forEach((imageName, index) => {
+                const link = document.createElement('a');
+                link.href = urlList[index]; // Assign a shuffled URL
+                link.className = 'image-link';
+
+                const img = document.createElement('img');
+                img.src = imageFolder + imageName;
+                img.alt = imageName;
+
+                link.appendChild(img);
+                imageContainer.appendChild(link);
+
+                // Random position
+                const x = Math.random() * (window.innerWidth - 60); // Ensure image stays within the viewport
+                const y = Math.random() * (window.innerHeight - 60);
+                link.style.left = `${x}px`;
+                link.style.top = `${y}px`;
+            });
+        });
+    </script>
+</body>
+</html>
