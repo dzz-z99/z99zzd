@@ -17,8 +17,8 @@
         }
 
         .image-link img {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
         }
     </style>
 </head>
@@ -66,8 +66,8 @@
                 imageContainer.appendChild(link);
 
                 // Random position within the viewport
-                const x = Math.random() * (window.innerWidth - 60); // Ensure image stays within the viewport
-                const y = Math.random() * (window.innerHeight - 60);
+                const x = Math.random() * (document.documentElement.clientWidth - 60); // Ensure image stays within the viewport
+                const y = Math.random() * (document.documentElement.clientHeight - 60);
                 link.style.left = `${x}px`;
                 link.style.top = `${y}px`;
             });
