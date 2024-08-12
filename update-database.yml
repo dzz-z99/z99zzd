@@ -1,0 +1,26 @@
+name: Update Database
+
+on:
+  push:
+    paths:
+      - 'files/**'   # Trigger only if files are added or modified in the `files/` directory
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Update Database JSON
+      run: |
+        python3 generate_database.py
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.email "your-email@example.com"
+        git config --global user.name "Your Name"
+        git add database.json
+        git commit -m "Update database.json"
+        git push
