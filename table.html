@@ -22,17 +22,17 @@
     </table>
 
     <script>
-        fetch('database.json')
+fetch('database.json')
     .then(response => response.json())
     .then(data => {
         const tableBody = document.getElementById('fileTable');
-        tableBody.innerHTML = '';  // Clear existing rows
+        tableBody.innerHTML = '';  // Clear the table body
         data.forEach(file => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${file.folder}</td>
                 <td><a href="${file.path}" target="_blank">${file.name}</a></td>
-                <td>${file.lastModified}</td>
+                <td>${file.created}</td>
                 <td>${file.size}</td>
             `;
             tableBody.appendChild(row);
