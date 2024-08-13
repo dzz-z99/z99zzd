@@ -32,14 +32,13 @@ fetch('database.json')
             row.innerHTML = `
                 <td>${file.folder}</td>
                 <td><a href="${file.path}" target="_blank">${file.name}</a></td>
-                <td>${file.created}</td>  <!-- Ensure this matches the field in JSON -->
+                <td>${file.lastModified}</td>
                 <td>${file.size}</td>
             `;
             tableBody.appendChild(row);
         });
     })
     .catch(error => console.error('Error loading JSON:', error));
-
     </script>
 </body>
 </html>
