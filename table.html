@@ -27,18 +27,29 @@ fetch('database.json')
     .then(data => {
         const tableBody = document.getElementById('fileTable');
         tableBody.innerHTML = '';  // Clear the table body
+
         data.forEach(file => {
+            let sizeText;
+            if (file.size < 1) {
+                // Convert to KB if size is less than 1 MB
+                sizeText = `${(file.size * 1024).toFixed(2)} KB`;
+            } else {
+                // Show size in MB
+                sizeText = `${file.size.toFixed(2)} MB`;
+            }
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${file.folder}</td>
                 <td><a href="${file.path}" target="_blank">${file.name}</a></td>
-                <td>${file.lastModified}</td>
-                <td>${file.size}</td>
+                <td>${file.lastModified}</td>  <!-- Correctly display last commit date -->
+                <td>${sizeText}</td>  <!-- Display the formatted size -->
             `;
             tableBody.appendChild(row);
         });
     })
     .catch(error => console.error('Error loading JSON:', error));
+
     </script>
 </body>
 </html>
