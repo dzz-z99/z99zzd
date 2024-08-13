@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3  # Update to v3
+      uses: actions/checkout@v3  # Ensure this is v3
 
     - name: Set up Python
-      uses: actions/setup-python@v3  # Update to v3
+      uses: actions/setup-python@v3  # Ensure this is v3
       with:
         python-version: '3.x'
 
@@ -32,7 +32,6 @@ jobs:
         git config --global user.name "Your Name"
         git add database.json
         git commit -m "Update database.json"
-        git push
+        git push --verbose
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
