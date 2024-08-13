@@ -3,42 +3,49 @@
         "folder": "files",
         "name": "zzz_farsi.pdf",
         "path": "files/zzz_farsi.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 0.02
+    },
+    {
+        "folder": "files",
+        "name": "IMG_2278.jpg",
+        "path": "files/IMG_2278.jpg",
+        "created": "2024-08-13 16:50:35",
+        "size": 5.58
     },
     {
         "folder": "files",
         "name": "TANK MAGAZINE.pdf",
         "path": "files/TANK MAGAZINE.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 2.89
     },
     {
         "folder": "files",
         "name": "15_eng_articulos_serra.pdf",
         "path": "files/15_eng_articulos_serra.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 0.06
     },
     {
         "folder": "files",
         "name": "Barthes-The_Death_of_the_Author.pdf",
         "path": "files/Barthes-The_Death_of_the_Author.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 0.08
     },
     {
         "folder": "files",
         "name": "Untitled 35_2.pdf",
         "path": "files/Untitled 35_2.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 0.0
     },
     {
         "folder": "files",
         "name": "x-2.pdf",
         "path": "files/x-2.pdf",
-        "lastModified": "2024-08-13 16:32:38",
+        "created": "2024-08-13 16:50:35",
         "size": 3.31
     }
 ]
