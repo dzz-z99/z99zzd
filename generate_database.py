@@ -17,16 +17,16 @@ for root, dirs, files in os.walk(folder):
         # Calculate the file size in MB
         size = os.path.getsize(file_path) / (1024 * 1024)
         
-        # Get the creation time (when the file was originally created)
-        creation_time = os.path.getctime(file_path)
-        creation_date = datetime.utcfromtimestamp(creation_time).strftime('%Y-%m-%d %H:%M:%S')
+        # Get the last modified time (which reflects the last commit date in GitHub)
+        last_modified_time = os.path.getmtime(file_path)
+        last_modified_date = datetime.utcfromtimestamp(last_modified_time).strftime('%Y-%m-%d %H:%M:%S')
 
         # Append file details to the list
         files_list.append({
             "folder": root,
             "name": file,
             "path": file_path.replace("\\", "/"),  # Convert backslashes to slashes
-            "created": creation_date,
+            "lastModified": last_modified_date,
             "size": round(size, 2)
         })
 
