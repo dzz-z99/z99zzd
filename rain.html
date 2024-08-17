@@ -3,32 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>undefined</title>
+    <title>Random GIFs with Hover Effect</title>
     <style>
         html, body {
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* Set background to white */
+            background-color: #ffffff;
+            position: relative;
         }
 
         .image-link {
-            position: absolute; /* Allow positioning anywhere on the page */
+            position: absolute;
+            z-index: 10; /* Ensure small images are on top */
         }
 
         .image-link img {
             width: 55px;
             height: 55px;
         }
+
+        .large-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            display: none;
+            z-index: 5; /* Place large images beneath small images */
+        }
     </style>
 </head>
 <body>
     <div id="image-container"></div>
+    <img id="large-image-display" class="large-image" alt="Large Hover Image">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const imageContainer = document.getElementById('image-container');
+            const largeImageDisplay = document.getElementById('large-image-display');
             const imageFolder = 'rain/';
+            const largeImageFolder = 'large-images/';
             const imageCount = 15; // Number of images
 
             // Generate image list
@@ -54,9 +70,17 @@
             shuffle(imageList);
             shuffle(urlList);
 
+            function setPosition(link) {
+                const imgSize = 60;
+                const x = Math.random() * (window.innerWidth - imgSize);
+                const y = Math.random() * (window.innerHeight - imgSize);
+                link.style.left = `${x}px`;
+                link.style.top = `${y}px`;
+            }
+
             imageList.forEach((imageName, index) => {
                 const link = document.createElement('a');
-                link.href = urlList[index]; // Assign a shuffled URL
+                link.href = urlList[index];
                 link.className = 'image-link';
 
                 const img = document.createElement('img');
@@ -66,11 +90,25 @@
                 link.appendChild(img);
                 imageContainer.appendChild(link);
 
-                // Random position within the viewport
-                const x = Math.random() * (window.innerWidth - 60); // Ensure image stays within the viewport
-                const y = Math.random() * (window.innerHeight - 60);
-                link.style.left = `${x}px`;
-                link.style.top = `${y}px`;
+                // Set initial random position within the viewport
+                setPosition(link);
+
+                // Hover event to show large image
+                link.addEventListener('mouseover', function() {
+                    const largeImageName = imageName.replace('.gif', '.jpg'); // Assuming large images are .jpg
+                    const largeImagePath = `${largeImageFolder}${largeImageName}`;
+                    console.log("Loading image:", largeImagePath); // Log image path
+                    largeImageDisplay.src = largeImagePath;
+                    largeImageDisplay.style.display = 'block';
+                });
+
+                // Mouse out event to hide large image
+                link.addEventListener('mouseout', function() {
+                    largeImageDisplay.style.display = 'none';
+                });
+
+                // Adjust position on resize
+                window.addEventListener('resize', () => setPosition(link));
             });
         });
     </script>
