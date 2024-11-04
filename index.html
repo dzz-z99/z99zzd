@@ -262,6 +262,41 @@ border-width: 1px;
         </form>
 
     </div>
-  
+
+<script>
+  // Subscription Form Script (Assuming you have a backend to handle the subscription)
+        document.getElementById('subscription-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            // Replace this URL with the Web App URL from the Google Apps Script deployment
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbweI72vvZj8aERIOVHX4ObCD5SSD4Gbc7G6v593A4Nj4oK5ZCcUqF_fiSjncLlrCz8QWA/exec';
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new URLSearchParams({ 'email': email }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        document.getElementById('message').style.display = 'block';
+                        document.getElementById('error-message').style.display = 'none';
+                        document.getElementById('subscription-form').reset();
+                    } else {
+                        document.getElementById('message').style.display = 'none';
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error);
+                    document.getElementById('message').style.display = 'none';
+                    document.getElementById('error-message').style.display = 'block';
+                });
+        });
+  </script>
 </body>
 </html>
