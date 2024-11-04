@@ -13,7 +13,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Prevent scrolling */
     }
 
     .container {
@@ -127,8 +126,11 @@
       .checkerboard-container2 {
         width: 100vw; /* Full width */
         height: 50vh; /* Half height */
-        top: 50%; /* Start from the center vertically */
-        transform: translateY(-50%); /* Center the container vertically */
+        top: 0; /* Align with top of the viewport */
+      }
+
+      .square-1 {
+        height: 100%; /* Full height of the container from the middle to the top */
       }
     }
   </style>
