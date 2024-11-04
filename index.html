@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="robots" content="noindex, nofollow">
-  <title>2undefined</title>
+  <title>undefined</title>
   <meta name="viewport" content="width=120px, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
     html, body {
@@ -13,6 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* Prevent scroll without using overflow:hidden property */
     }
 
     .container {
@@ -21,9 +22,9 @@
 
     .image {
       display: block;
-      width: 130px;
+      width: 130px; /* Adjust the value to change the image width */
       height: auto;
-      margin: 0 auto;
+      margin: 0 auto; /* Center the image horizontally */
       animation: rotation 0s infinite linear;
       z-index: 100;
     }
@@ -38,7 +39,7 @@
       height: 7px;
       border-radius: 50%;
       background-color: black;
-      z-index: 2;
+      z-index: 2; /* Ensure the dot is on top of the image */
     }
 
     .black-dot:hover {
@@ -58,7 +59,7 @@
       position: fixed;
       width: 50vw;
       height: 50vh;
-      z-index: 1;
+      z-index: 1; /* Lower z-index to keep GIFs on top */
     }
 
     .checkerboard-container {
@@ -102,10 +103,10 @@
       border-width: 1px;
       border-style: solid;
       border-color: #989898 #8f8f8f #ebebeb #8f8f8f;
-      border-top-color: #989898;
+      border-top-color: #989898;  
       border-bottom-color: #ebebeb;
       box-sizing: border-box;
-      z-index: 2;
+      z-index: 2; /* Ensure squares hover effect works properly */
     }
 
     .square-1:hover {
@@ -113,50 +114,30 @@
       opacity: 1;
     }
 
-    /* Media Query for Mobile Devices */
+    /* Media Query for Phone Version */
     @media (max-width: 768px), (max-height: 400px) {
-      /* Hide other checkerboard containers */
+      /* Hide all checkerboard containers except the first one */
       .checkerboard-container,
       .checkerboard-container3,
       .checkerboard-container4 {
         display: none;
       }
 
-      /* Adjust checkerboard-container2 */
+      /* Adjust the size and positioning of the first checkerboard container */
       .checkerboard-container2 {
-        width: 100vw;
-        height: 100vh;
-      }
-
-      /* Adjust the grid layout */
-      .checkerboard {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        width: 100vw; /* Full width */
+        height: 100vh; /* Full height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .square-1 {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-      }
-
-      .square-2,
-      .square-3,
-      .square-4 {
-        display: none;
-      }
-
-      /* Remove scroll space */
-      html, body {
-        height: 100vh;
-        display: block;
-      }
-
-      /* Center the container */
-      .container {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        width: 50vw;
+        height: 50vh;
+        position: absolute;
+        bottom: 50%; /* Align the bottom edge to the vertical middle of the window */
+        transform: translateY(50%);
       }
     }
   </style>
