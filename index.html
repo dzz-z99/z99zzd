@@ -103,7 +103,7 @@
       border-width: 1px;
       border-style: solid;
       border-color: #989898 #8f8f8f #ebebeb #8f8f8f;
-      border-top-color: #989898;  
+      border-top-color: #989898;
       border-bottom-color: #ebebeb;
       box-sizing: border-box;
       z-index: 2; /* Ensure squares hover effect works properly */
@@ -115,11 +115,7 @@
     }
 
     /* Media Query for Phone Version */
-    @media (max-width: 768px) {
-      html, body {
-        align-items: flex-start; /* Align content to the top of the viewport */
-      }
-
+    @media (max-width: 768px), (max-height: 400px) {
       /* Hide all checkerboard containers except the first one */
       .checkerboard-container,
       .checkerboard-container3,
@@ -127,43 +123,12 @@
         display: none;
       }
 
-      /* Adjust the size and positioning of the first checkerboard container */
+      /* Adjust the size and position of the first checkerboard container */
       .checkerboard-container2 {
         width: 100vw; /* Full width */
         height: 50vh; /* Half height */
-        position: fixed;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%); /* Align the bottom of square-1 to the vertical center of the window */
-      }
-
-      .square-1 {
-        grid-column: 1 / span 2;
-        grid-row: 1 / span 2;
-      }
-    }
-
-    @media (max-height: 400px) {
-      /* Hide all checkerboard containers except the first one */
-      .checkerboard-container,
-      .checkerboard-container3,
-      .checkerboard-container4 {
-        display: none;
-      }
-
-      /* Adjust the size of the first checkerboard container */
-      .checkerboard-container2 {
-        width: 100vw; /* Full width */
-        height: 50vh; /* Half height */
-        position: fixed;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%); /* Align the bottom of square-1 to the vertical center of the window */
-      }
-
-      .square-1 {
-        grid-column: 1 / span 2;
-        grid-row: 1 / span 2;
+        top: 50%; /* Start from the center vertically */
+        transform: translateY(-50%); /* Center the container vertically */
       }
     }
   </style>
@@ -182,6 +147,5 @@
       <div class="square-4"></div>
     </div>
   </div>
-
 </body>
 </html>
