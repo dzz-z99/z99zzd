@@ -3,7 +3,7 @@
 <head>
   <meta name="robots" content="noindex, nofollow">
   <title>undefined</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=120px, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
     html, body {
       margin: 0;
@@ -115,14 +115,14 @@
 
     /* Media Query for Mobile Devices */
     @media (max-width: 768px), (max-height: 400px) {
-      /* Hide all checkerboard containers except the second one */
+      /* Hide all checkerboard containers except the first one */
       .checkerboard-container,
       .checkerboard-container3,
       .checkerboard-container4 {
         display: none;
       }
 
-      /* Adjust the size and position of the second checkerboard container */
+      /* Adjust the size and position of the first checkerboard container */
       .checkerboard-container2 {
         width: 100vw; /* Full width */
         height: 50vh; /* Half height */
@@ -130,23 +130,29 @@
         left: 0;
       }
 
-      /* Adjust the body to remove scrollbars */
-      html, body {
-        overflow: hidden;
-        height: 100vh;
-      }
-
-      /* Adjust the container with the image and dot to be centered in the bottom half */
+      /* Adjust the container for the image and black dot */
       .container {
-        position: absolute;
+        position: fixed;
         top: 50vh;
+        left: 0;
         width: 100%;
         height: 50vh;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+
+      /* Adjust the body to prevent scrolling */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden; /* Prevent scrolling */
+        display: block; /* Remove flex properties */
+      }
     }
+
   </style>
 </head>
 <body>
@@ -163,5 +169,6 @@
       <div class="square-4"></div>
     </div>
   </div>
+
 </body>
 </html>
