@@ -28,19 +28,20 @@
       z-index: 100;
     }
 
-    .black-dot {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-          border-width: 1px;
-      background: white;
-      z-index: 2; /* Ensure the dot is on top of the image */
-    }
+.black-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1px solid black; /* Define the border */
+  background: white;
+  z-index: 2; /* Ensure the dot is on top of the image */
+}
+
 
     .black-dot:hover {
       background: rgba(0, 0, 0, 0.03);
