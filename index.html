@@ -198,6 +198,49 @@ display: none;
             }
 
 
+          .black-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 25px;
+  height: 26px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  border-top-color: #989898;
+  border-right-color: #8f8f8f;
+  border-bottom-color: #ebebeb;
+  border-left-color: #8f8f8f;
+  background: white;
+  z-index: 2; /* Ensure the dot is on top of the image */
+}
+
+              .image {
+      display: block;
+      width: 190px; /* Adjust the value to change the image width */
+      height: auto;
+      margin: 0 auto; /* Center the image horizontally */
+      animation: rotation 0s infinite linear;
+      z-index: 100;
+    }
+
+        .square-1 {
+display: none;
+        }
+
+                  .square-1:hover {
+            background: rgba(0, 0, 0, 0);
+            opacity: 1;
+        }
+
+              a[href="https://dariodezfu.li/"] {
+        pointer-events: none; /* Disables link functionality */
+        cursor: default; /* Changes the cursor to default */
+    }
+
+
         }
 
 
