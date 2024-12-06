@@ -144,8 +144,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border-width: 1px;
   border-style: solid;
@@ -166,8 +166,21 @@
       z-index: 100;
     }
 
+        .square-1 {
+    border-width: 0px;
+    border-style: solid;
+    border-color: #989898 #8f8f8f #ebebeb #8f8f8f;
+    border-top-color: #989898;  
+    border-bottom-color: #ebebeb;
+    box-sizing: border-box;
+          pointer-events: none; /* Disable clicking */
+            z-index: 2; /* Ensure squares hover effect works properly */
+        }
 
-          
+                  .square-1:hover {
+            background: rgba(0, 0, 0, 0);
+            opacity: 1;
+        }
 
         }
 
