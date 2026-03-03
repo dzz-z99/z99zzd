@@ -34,8 +34,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border-width: 1px;
   border-style: solid;
@@ -353,50 +353,5 @@ border-width: 1px;
         </div>
     </div>
 
-    <div class="subscription-box">
-              <p id="message" class="success-message" style="display: none;">Thank you for subscribing!</p>
-        <p id="error-message" class="error-message" style="display: none;">Something went wrong. Please try again.</p>
-        <form id="subscription-form">
-            <input type="email" id="email" placeholder="Email Address" required>
-            <button type="submit">Subscribe</button>
-        </form>
-
-    </div>
-
-<script>
-  // Subscription Form Script (Assuming you have a backend to handle the subscription)
-        document.getElementById('subscription-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value;
-
-            // Replace this URL with the Web App URL from the Google Apps Script deployment
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbweI72vvZj8aERIOVHX4ObCD5SSD4Gbc7G6v593A4Nj4oK5ZCcUqF_fiSjncLlrCz8QWA/exec';
-
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new URLSearchParams({ 'email': email }),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        document.getElementById('message').style.display = 'block';
-                        document.getElementById('error-message').style.display = 'none';
-                        document.getElementById('subscription-form').reset();
-                    } else {
-                        document.getElementById('message').style.display = 'none';
-                        document.getElementById('error-message').style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error!', error);
-                    document.getElementById('message').style.display = 'none';
-                    document.getElementById('error-message').style.display = 'block';
-                });
-        });
-  </script>
 </body>
 </html>
