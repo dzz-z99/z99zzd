@@ -22,6 +22,11 @@
       text-decoration: underline;
     }
 
+    a:hover {
+      color: #000000;
+      text-decoration: underline;
+    }
+
     img {
       max-width: 100%;
       height: auto;
@@ -30,9 +35,22 @@
       padding: 0;
     }
 
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+
     p {
       margin: 0;
       padding: 0;
+    }
+
+    iframe,
+    video,
+    object,
+    embed {
+      max-width: 100%;
+      display: block;
     }
 
     .page {
@@ -46,47 +64,27 @@
       padding: 0;
     }
 
-    .tumblr_posts {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      max-width: 900px;
-    }
-
-    .tumblr_post {
-      list-style: none;
+    .post {
       margin: 0 0 28px 0;
       padding: 0;
     }
 
-    .tumblr_photo_post img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .tumblr_caption,
-    .tumblr_body {
-      margin: 0;
-      padding: 0;
-    }
-
-    .tumblr_caption p,
-    .tumblr_body p {
-      margin: 0;
-      padding: 0;
-    }
-
-    .tumblr_title {
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      padding: 0;
-    }
-
-    .tumblr_post_date,
-    .tumblr_tags {
+    .post-title {
       display: none;
+    }
+
+    .loading,
+    .error {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tumblr_video_container {
+      max-width: 100% !important;
+    }
+
+    .tumblr_video_container iframe {
+      max-width: 100% !important;
     }
   </style>
 </head>
@@ -97,7 +95,7 @@
 
     <div class="intro">
       <p>
-        d<br>
+        Donatas Tretjakovas<br>
         For commissions or collaborations
         <a href="mailto:your@email.com">your@email.com</a>
         <a href="https://www.instagram.com/YOURUSERNAME" target="_blank">instagram</a>
@@ -105,9 +103,142 @@
       <br>
     </div>
 
-    <script src="https://mrdony.tumblr.com/js"></script>
+    <div id="posts">
+      <p class="loading">Loading portfolio...</p>
+    </div>
 
   </main>
+
+  <script>
+    const BLOG = "mrdony";
+    const NUMBER_OF_POSTS = 50;
+
+    function cleanTumblrHtml(html) {
+      if (!html) return "";
+
+      return html
+        .replace(/<script[\s\S]*?<\/script>/gi, "")
+        .replace(/<style[\s\S]*?<\/style>/gi, "");
+    }
+
+    function renderPhotoPost(post) {
+      let html = "";
+
+      if (post.photos && post.photos.length) {
+        post.photos.forEach(function(photo) {
+          const url =
+            photo["photo-url-1280"] ||
+            photo["photo-url-500"] ||
+            photo["photo-url-400"] ||
+            photo["photo-url-250"];
+
+          if (url) {
+            html += '<img src="' + url + '" alt="">';
+          }
+        });
+      } else if (post["photo-url-1280"] || post["photo-url-500"]) {
+        const url = post["photo-url-1280"] || post["photo-url-500"];
+        html += '<img src="' + url + '" alt="">';
+      }
+
+      if (post["photo-caption"]) {
+        html += cleanTumblrHtml(post["photo-caption"]);
+      }
+
+      return html;
+    }
+
+    function renderRegularPost(post) {
+      let html = "";
+
+      if (post["regular-title"]) {
+        html += '<div class="post-title">' + post["regular-title"] + '</div>';
+      }
+
+      if (post["regular-body"]) {
+        html += cleanTumblrHtml(post["regular-body"]);
+      }
+
+      return html;
+    }
+
+    function renderVideoPost(post) {
+      let html = "";
+
+      if (post["video-player"]) {
+        html += post["video-player"];
+      }
+
+      if (post["video-caption"]) {
+        html += cleanTumblrHtml(post["video-caption"]);
+      }
+
+      return html;
+    }
+
+    function renderAudioPost(post) {
+      let html = "";
+
+      if (post["audio-player"]) {
+        html += post["audio-player"];
+      }
+
+      if (post["audio-caption"]) {
+        html += cleanTumblrHtml(post["audio-caption"]);
+      }
+
+      return html;
+    }
+
+    function renderPost(post) {
+      if (post.type === "photo") return renderPhotoPost(post);
+      if (post.type === "regular") return renderRegularPost(post);
+      if (post.type === "video") return renderVideoPost(post);
+      if (post.type === "audio") return renderAudioPost(post);
+
+      return "";
+    }
+
+    function tumblr_api_read(data) {
+      const container = document.getElementById("posts");
+      container.innerHTML = "";
+
+      if (!data || !data.posts || !data.posts.length) {
+        container.innerHTML = '<p class="error">No Tumblr posts found.</p>';
+        return;
+      }
+
+      data.posts.forEach(function(post) {
+        const content = renderPost(post);
+
+        if (!content.trim()) return;
+
+        const article = document.createElement("article");
+        article.className = "post";
+        article.innerHTML = content;
+        container.appendChild(article);
+      });
+    }
+
+    function loadTumblr() {
+      const script = document.createElement("script");
+      script.src =
+        "https://" +
+        BLOG +
+        ".tumblr.com/api/read/json?num=" +
+        NUMBER_OF_POSTS +
+        "&callback=tumblr_api_read";
+
+      script.onerror = function() {
+        document.getElementById("posts").innerHTML =
+          '<p class="error">Could not load Tumblr posts. Make sure the Tumblr blog is public.</p>';
+      };
+
+      document.body.appendChild(script);
+    }
+
+    loadTumblr();
+  </script>
 
 </body>
 </html>
